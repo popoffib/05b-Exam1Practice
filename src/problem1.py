@@ -28,6 +28,7 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
 
 import testing_helper
 import time
+import math
 
 
 def main():
@@ -150,19 +151,17 @@ def run_test_problem1a():
     # -------------------------------------------------------------------------
 
     # Test 3:
-    expected = 1
-    print_expected_result_of_test([5, 100], expected, test_results,
+    expected = 1.135
+    print_expected_result_of_test([1, -2], expected, test_results,
                                   format_string)
-    actual = problem1a(5, 100)
+    actual = problem1a(-1, 2)
     print_actual_result_of_test(expected, actual, test_results, precision = 3)
 
-    print_summary_of_test_results(test_results)
-
     # Test 4:
-    expected = 1
-    print_expected_result_of_test([7, 10], expected, test_results,
+    expected = 1.955
+    print_expected_result_of_test([0, 3], expected, test_results,
                                   format_string)
-    actual = problem1a(7, 10)
+    actual = problem1a(0, 3)
     print_actual_result_of_test(expected, actual, test_results, precision = 3)
 
     print_summary_of_test_results(test_results)
@@ -186,7 +185,7 @@ def problem1a(m, n):
       -- If m is 30 and n is 100, the correct answer is about 1.278.
     """
     # -------------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
@@ -194,7 +193,11 @@ def problem1a(m, n):
     #    DIFFICULTY:      5
     #    TIME ESTIMATE:   10 minutes.
     # -------------------------------------------------------------------------
+    total = 0
+    for k in range((abs(n))**2-(abs(m))**2+1):
+        total = total + math.sin(m**2+k)
 
+    return total
 
 def run_test_problem1b():
     """ Tests the   problem1b   function. """
