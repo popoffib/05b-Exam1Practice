@@ -197,7 +197,15 @@ def problem2b(rect, n, delta, win):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 to 25 minutes.
     # -------------------------------------------------------------------------
-
+    rect.attach_to(win)
+    for k in range(n - 1):
+        point1 = rg.Point((rect.get_lower_left_corner().x) - (k + 1) * delta, (rect.get_upper_right_corner().y)
+                          - (k + 1) * delta)
+        point2 = rg.Point((rect.get_upper_right_corner().x) + (k + 1) * delta, (rect.get_lower_left_corner().y)
+                          + (k + 1) * delta)
+        rect1 = rg.Rectangle(point1, point2)
+        rect1.attach_to(win)
+        win.render()
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
