@@ -38,7 +38,7 @@ def main():
 def run_test_problem3a():
     """ Tests the   problem3a   function. """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # DONE: 2. Implement this TEST function.
     #   It TESTS the  problem1a  function defined below.
     #   Include at least **   5   ** tests (we wrote four for you).
     # -------------------------------------------------------------------------
@@ -138,7 +138,7 @@ def problem3a(window, point, n):
         :type n:      int
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
@@ -146,6 +146,20 @@ def problem3a(window, point, n):
     #    DIFFICULTY:      7 or 8
     #    TIME ESTIMATE:   20 to 35 minutes.
     # -------------------------------------------------------------------------
+    count = 0
+    for k in range(n):
+        line = rg.Line(rg.Point(point.x + (20 * k), point.y + (10 * k)),
+                       rg.Point(point.x + (20 * k), point.y + (10 * k) + 50))
+
+        if 2 * k < 13:
+            line.thickness = 1 + 2 * k
+        else:
+            line.thickness = 13
+        line.attach_to(window)
+        count = count + line.thickness
+
+    window.render()
+    return count
 
 
 def run_test_problem3b():
@@ -215,7 +229,15 @@ def problem3b(m, point1):
     #    DIFFICULTY:      8 or 9
     #    TIME ESTIMATE:   20 to 30 minutes.
     # -------------------------------------------------------------------------
-
+    window = rg.RoseWindow(400, 650)
+    count = 0
+    for k in range(m):
+        problem3a(window, point1, 3 + (2 * k))
+        window.render()
+        point1.y = point1.y + 60
+        count = count + problem3a(window, point1, 3 +(2 * k))
+    window.close_on_mouse_click()
+    return count
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------

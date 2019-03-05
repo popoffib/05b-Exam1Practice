@@ -379,11 +379,12 @@ def problem1c(n):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 to 20 minutes.
     # -------------------------------------------------------------------------
-    sum1 = 1
-    for k in range(n-1):
-        if is_prime(2 + k) == True:
-            sum1 = sum1 + (2 + k)
-    return sum_of_digits(sum1)
+    total = 1
+    for k in range(n - 1):
+        if is_prime(k + 2):
+            total = total * (k + 2)
+    answer = sum_of_digits(total)
+    return answer
 
 
 ###############################################################################
